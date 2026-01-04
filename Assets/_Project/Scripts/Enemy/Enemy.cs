@@ -3,40 +3,37 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _speed = 4f;
+    [SerializeField] private float _damage = 1f;
 
     private EnemyAnimation _enemyAnimation;
     private PlayerController _player;
+    private Rigidbody2D _rb;
 
     void Awake()
     {
         _enemyAnimation = GetComponent<EnemyAnimation>();
+        _rb = GetComponent<Rigidbody2D>();
         _player = FindAnyObjectByType<PlayerController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (_player)
-        {
-            EnemyMovement();
-        }
+        if (_player == null) return;
+
+        // blocca le spinte fisiche
+        _rb.velocity = Vector2.zero;
+
+        EnemyMovement();
     }
 
     public void EnemyMovement()
     {
-        Vector3 movingDirection = (_player.transform.position - transform.position).normalized;
+        if (_player == null) return;
+
+        Vector2 movingDirection = (_player.transform.position - transform.position).normalized;
         _enemyAnimation.SetHSpeedParam(movingDirection.x);
         _enemyAnimation.SetVSpeedParam(movingDirection.y);
-        transform.position = transform.position + movingDirection * (_speed * Time.deltaTime);
+
+        transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, _speed * Time.deltaTime);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.TryGetComponent<PlayerController>(out var player))
-        {
-            if (player.TryGetComponent<LifeController>(out var playerLifeController))
-            Destroy(_player.gameObject);
-        }
-
-    }
-
 }

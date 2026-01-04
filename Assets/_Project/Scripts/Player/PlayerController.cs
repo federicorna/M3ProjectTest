@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _speed = 10f; 
+//  SCRIPT MOVIMENTO------------------------------
+
+    [SerializeField] private float _speed = 10f;
 
     private Rigidbody2D _rb;
     private PlayerAnimation _playerAnimation;
@@ -40,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        _direction = new Vector2 (_horizontal, _vertical).normalized;    //UPDATE?
+        _direction = new Vector2 (_horizontal, _vertical).normalized;
 
         _rb.MovePosition (_rb.position + _direction * (_speed * Time.fixedDeltaTime));
     }
