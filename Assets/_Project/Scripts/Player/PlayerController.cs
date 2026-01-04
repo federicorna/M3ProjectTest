@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
         if (_horizontal != 0 || _vertical != 0) 
         {
-            _playerAnimation.SetHSpeedParam (_horizontal);
+            _playerAnimation.SetHSpeedParam (_horizontal);  //Passaggio a PlayerAnimations.cs
             _playerAnimation.SetVSpeedParam (_vertical);
             _playerAnimation.SetIsMovingParam (true);
         }
