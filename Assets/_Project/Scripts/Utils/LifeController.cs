@@ -3,7 +3,7 @@ using System.Collections;
 
 public class LifeController : MonoBehaviour
 {
-    [SerializeField] protected int _maxHp = 10;
+    [SerializeField] protected int _maxHp;
     protected int _currentHp;
 
     [SerializeField] protected bool _useInvincibility = false;   //Invincibilita enemy gia disattiva
@@ -21,6 +21,8 @@ public class LifeController : MonoBehaviour
         if (_useInvincibility && _isInvincible) return;
 
         _currentHp -= damage;
+        Debug.Log ($"{gameObject}, danno pari a: {damage},  vita avversario: {_currentHp}");
+
         _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);    //Controllo range stato vita
 
         if (_currentHp == 0)
@@ -33,15 +35,13 @@ public class LifeController : MonoBehaviour
         }
     }
 
-    //public void AddHp(int healing)
-    //{
-    //    SetHp(_currentHp + healing);
-    //}
-
-    //public void TakeDamage(int damage)
-    //{
-    //    SetHp(_currentHp - damage);
-    //}
+    //-------------------------------------------
+    private void SetHp (int hp) => hp = _currentHp ;
+    public void AddHp (int healing)
+    {
+        SetHp (_currentHp + healing);
+    }
+    //--------------------------------------------
 
     private IEnumerator InvincibilityCoroutine()    //Definizione invincibilita
     {

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bullet
   - Enemy
+  - Gun
+  - PickUp
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -13,9 +16,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player layer
+  - Bullet layer
+  - Wall layer
   - 
   - 
   - 
@@ -63,6 +66,12 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3654603357
+    locked: 0
+  - name: Gun
+    uniqueID: 2912708325
+    locked: 0
+  - name: Bullet
+    uniqueID: 2355924259
     locked: 0
   - name: BackWalls
     uniqueID: 1482929295

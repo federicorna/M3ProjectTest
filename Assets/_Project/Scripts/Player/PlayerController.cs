@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
 //  SCRIPT MOVIMENTO------------------------------
 
-    [SerializeField] private float _speed = 10f;
+    [SerializeField] private float _speed = 7f;
 
     private Rigidbody2D _rb;
     private PlayerAnimation _playerAnimation;

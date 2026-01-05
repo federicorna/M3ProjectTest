@@ -4,9 +4,9 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _speed = 4f;
     [SerializeField] private int _damage = 1;
-    [SerializeField] private float damageCooldown = 0.5f;   //Cooldown tra attacchi
+    [SerializeField] private float _damageCooldown = 0.5f;   //Cooldown tra attacchi
 
-    private float lastDamageTime;
+    private float _lastDamageTime;
     private PlayerController _player;
     private Rigidbody2D _rb;
     private EnemyAnimation _enemyAnimation;
@@ -43,14 +43,14 @@ public class Enemy : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag ("Player")) return;    //cio che collide != tag, return
 
-        if (Time.time < lastDamageTime + damageCooldown) return;
+        if (Time.time < _lastDamageTime + _damageCooldown) return;
 
         LifeController life = collision.gameObject.GetComponent<LifeController>();  //La comp. LifeController del oggetto che collido = life
 
         if (life != null)
         {
             life.TakeDamage (_damage);
-            lastDamageTime = Time.time;
+            _lastDamageTime = Time.time;
         }
     }
 }

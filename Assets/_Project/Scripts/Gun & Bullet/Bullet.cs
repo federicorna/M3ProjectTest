@@ -3,42 +3,37 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private float _speed = 10f;
+    [SerializeField] private int _damage = 1;
+    [SerializeField] private float _lifeTime = 2f;
 
-    [SerializeField] private float _speed = 8f;
-    [SerializeField] private int _damage = 20;
-    [SerializeField] private float _bulletLifeSpan = 5f;
+    private Rigidbody2D _rb;
 
-    private Vector2 _direction;
-    public Vector2 Direction => _direction;
-
-    private Collider2D _collider;
-
-    public void SetDirection(Vector2 dir)
-    {
-        _direction = dir.normalized;
-    }
     void Awake()
     {
-        _collider = GetComponent<Collider2D>();
+        _rb = GetComponent<Rigidbody2D>();
+        Destroy (gameObject, _lifeTime);
     }
 
-    void Start()
+    public void SetDirection (Vector2 direction)
     {
-        Destroy (gameObject, _bulletLifeSpan);
+        _rb.velocity = direction.normalized * _speed;
     }
 
-    void Update()
+    private void OnTriggerEnter2D (Collider2D other)
     {
-        transform.position = transform.position + (Vector3)_direction * (_speed * Time.deltaTime);
-    }
+        LifeController life = other.GetComponent<LifeController>();
 
-    void OnCollisionEnter2D (Collision2D collision)
-    {
-        collision.collider.GetComponent<LifeController>()?.TakeDamage (_damage);
+        if (life != null)
+        {
+            life.TakeDamage (_damage);
+            Destroy (gameObject);
+            return;
+        }
 
-       // _bulletAnimation.SetColliderTrigger();
-        _direction = Vector2.zero;
-        _collider.enabled = false;
-        Destroy(gameObject);
+        if (other.CompareTag ("Wall"))
+        {
+            Destroy (gameObject);
+        }
     }
 }

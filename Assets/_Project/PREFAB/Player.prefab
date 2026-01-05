@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8530866947606905199}
   - component: {fileID: 293919486878982770}
   - component: {fileID: 9186703360396227682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1acafab4b6bd344cb980caed0cf461c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHp: 5
+  _maxHp: 3
   _useInvincibility: 0
   _invincibilityTime: 0.5
 --- !u!1 &5371665060346223553
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 2580306457713171860}
   - component: {fileID: 5357610362775063268}
   - component: {fileID: 7043679828262703539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 903597381048942254}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
