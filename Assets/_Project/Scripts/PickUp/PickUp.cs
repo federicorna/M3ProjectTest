@@ -24,7 +24,8 @@ public class Pickup : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        Instantiate(_gunPrefab, other.transform);
+        Instantiate (_gunPrefab, other.transform);
+        
         Destroy(gameObject);
     }
 }

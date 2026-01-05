@@ -143,7 +143,7 @@ Transform:
   m_GameObject: {fileID: 8164987369426957678}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.55, y: -0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -208,3 +208,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gunPrefab: {fileID: 4409435487428473158, guid: 52514d5e237c98b42b9c774d774ad6f0, type: 3}
+  pickupSound: {fileID: 8300000, guid: 676d9d7879d59114ebe4cb9bc1434290, type: 3}
+  sfxSourcePrefab: {fileID: 0}

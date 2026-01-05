@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletPrefab: {fileID: 3799270137187869552, guid: ad57783aeedd2114595a58c345f9ba7e, type: 3}
-  _fireRate: 1
+  _fireRate: 0.8
   shootDistance: 5
 --- !u!1 &5088520109299095741
 GameObject:
